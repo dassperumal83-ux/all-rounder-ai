@@ -20,7 +20,8 @@ def home():
 @app.route('/chat')
 def chat():
     if model:
-        response = model.generate_content("Say hi, I am Knox AI")
+        user_msg=request.args.get("msg","hi")
+        response = model.generate_content(user_msg)
         return response.text
     else:
         return "API Key not set yet bro!"
@@ -28,4 +29,3 @@ def chat():
 if__name__=="__main__":
     port=int(os.environ.get("PORT",10000))
     app.run(host="0.0.0.0",port=port)
-
