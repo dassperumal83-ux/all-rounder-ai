@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request,jsonify
 import google.generativeai as genai
 import os
 
@@ -24,6 +24,8 @@ def chat():
         return response.text
     else:
         return "API Key not set yet bro!"
+        
+if__name__=="__main__":
+    port=int(os.environ.get("PORT",10000))
+    app.run(host="0.0.0.0",port=port)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
