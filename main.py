@@ -356,10 +356,14 @@ def home():
 def chat():
     data = request.json
     msg = data.get('msg', '')
-
-    # Ippo dummy reply. Aprom unoda AI model/OPENAI API connect panalam
-    reply = f"Command received: {msg}. Knox processing..."
-
+    
+    if msg.lower() == 'hi':
+        reply = "Hello CEO. Knox is online and ready. Command me."
+    elif msg.lower() == 'test':
+        reply = "Voice + UI + Backend all working perfectly, sir."
+    else:
+        reply = f"Received: {msg}. Knox is ready for your next command."
+    
     return jsonify({'reply': reply})
 
 if __name__ == '__main__':
