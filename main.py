@@ -7,9 +7,9 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Gemini AI connect
+# Gemini AI connect - 404 fix: gemini-pro model
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-pro')
 
 HTML = """
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ HTML = """
         z-index: 0;
     }
 
-  .container {
+   .container {
         position: relative;
         z-index: 1;
         height: 100vh;
@@ -48,12 +48,12 @@ HTML = """
         padding: 40px 20px;
     }
 
-  .brand {
+   .brand {
         text-align: center;
         margin-top: 60px;
     }
 
-  .brand h1 {
+   .brand h1 {
         font-size: 48px;
         font-weight: 700;
         letter-spacing: 4px;
@@ -63,14 +63,14 @@ HTML = """
         margin-bottom: 8px;
     }
 
-  .brand p {
+   .brand p {
         font-size: 14px;
         color: #888;
         letter-spacing: 2px;
         font-weight: 300;
     }
 
-  .chat-area {
+   .chat-area {
         width: 100%;
         max-width: 800px;
         flex: 1;
@@ -81,31 +81,32 @@ HTML = """
         gap: 20px;
     }
 
-  .chat-area::-webkit-scrollbar {
+   .chat-area::-webkit-scrollbar {
         width: 4px;
     }
 
-  .chat-area::-webkit-scrollbar-thumb {
+   .chat-area::-webkit-scrollbar-thumb {
         background: #D4AF37;
         border-radius: 2px;
     }
 
-  .msg {
+   .msg {
         max-width: 70%;
         padding: 16px 20px;
         border-radius: 12px;
         line-height: 1.6;
         font-size: 15px;
         animation: fadeIn 0.3s ease;
+        white-space: pre-wrap;
     }
 
-  .user-msg {
+   .user-msg {
         align-self: flex-end;
         background: rgba(212, 175, 55, 0.1);
         border: 1px solid rgba(212, 175, 55, 0.3);
     }
 
-  .knox-msg {
+   .knox-msg {
         align-self: flex-start;
         background: #1A1A1A;
         border-left: 3px solid #D4AF37;
@@ -116,14 +117,14 @@ HTML = """
         to { opacity: 1; transform: translateY(0); }
     }
 
-  .input-wrapper {
+   .input-wrapper {
         width: 100%;
         max-width: 700px;
         position: relative;
         margin-bottom: 40px;
     }
 
-  .mic-btn {
+   .mic-btn {
         position: absolute;
         left: 12px;
         top: 50%;
@@ -138,7 +139,7 @@ HTML = """
         z-index: 2;
     }
 
-  .mic-btn.listening {
+   .mic-btn.listening {
         color: #FF4444;
         animation: pulse 1s infinite;
     }
@@ -148,7 +149,7 @@ HTML = """
         50% { transform: translateY(-50%) scale(1.3); }
     }
 
-  .input-box {
+   .input-box {
         width: 100%;
         background: #0F0F0F;
         border: 1px solid rgba(212, 175, 55, 0.3);
@@ -161,17 +162,17 @@ HTML = """
         transition: all 0.3s ease;
     }
 
-  .input-box:focus {
+   .input-box:focus {
         border-color: #D4AF37;
         box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
     }
 
-  .input-box::placeholder {
+   .input-box::placeholder {
         color: #555;
         letter-spacing: 1px;
     }
 
-  .send-btn {
+   .send-btn {
         position: absolute;
         right: 12px;
         top: 50%;
@@ -186,12 +187,12 @@ HTML = """
         z-index: 2;
     }
 
-  .send-btn:hover {
+   .send-btn:hover {
         transform: translateY(-50%) scale(1.2);
         text-shadow: 0 0 10px #D4AF37;
     }
 
-  .footer {
+   .footer {
         position: absolute;
         bottom: 12px;
         right: 20px;
@@ -200,10 +201,10 @@ HTML = """
     }
 
     @media (max-width: 768px) {
-      .brand h1 { font-size: 36px; }
-      .msg { max-width: 85%; font-size: 14px; }
-      .input-wrapper { max-width: 100%; }
-      .brand { margin-top: 40px; }
+       .brand h1 { font-size: 36px; }
+       .msg { max-width: 85%; font-size: 14px; }
+       .input-wrapper { max-width: 100%; }
+       .brand { margin-top: 40px; }
     }
 </style>
 </head>
