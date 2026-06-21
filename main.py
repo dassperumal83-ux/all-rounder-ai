@@ -255,13 +255,16 @@ function animate() {
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
         p.x += p.speedX;
-        p.y += p.speedY;
-        if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-    });
-    requestAnimationFrame(animate);
-}
-animate();
+        @app.route('/chat', methods=['POST'])
+def chat():
+    data = request.json
+    user_message = data.get('message')
+    
+    try:
+        response = model.generate_content(user_message)
+        return jsonify({"reply": response.text})
+    except Exception as e:
+        return jsonify({"reply": f"Knox error: {str(e)}"})
 
 // Chat logic
 const inputBox = document.getElementById('inputBox');
@@ -363,15 +366,12 @@ def home():
 def chat():
     data = request.json
     msg = data.get('msg', '')
-    
-    if msg.lower() == 'hi':
-        reply = "Hello CEO. Knox is online and ready. Command me."
-    elif msg.lower() == 'test':
-        reply = "Voice + UI + Backend all working perfectly, sir."
-    else:
-        reply = f"Received: {msg}. Knox is ready for your next command."
-    
-    return jsonify({'reply': reply})
+
+    try:
+        response = model.generate_content(msg)
+        return jsonify({'reply': response.text})
+    except Exception as e:
+        return jsonify({'reply': f'Knox Error: {str(e)}'})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
