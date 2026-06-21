@@ -1,8 +1,15 @@
 from flask import Flask, render_template_string, request, jsonify
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
 
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+model = genai.GenerativeModel('gemini-1.5-flash')
 HTML = """
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
