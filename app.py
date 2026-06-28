@@ -1,176 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KNOX AI Assistant</title>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  body {
-    background: #000;
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-  }
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import os
 
-  .container {
-    width: 100%;
-    max-width: 600px;
-    background: #0a0a0a;
-    border: 2px solid #FFD700;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-  }
+app = Flask(__name__)
+CORS(app)
 
-  .header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
+@app.route('/')
+def home():
+    return jsonify({"status": "KNOX backend is alive 🔥", "message": "Ready to chat"})
 
-  .logo {
-    width: 60px;
-    height: 60px;
-    background: #FFD700;
-    border-radius: 15px;
-    margin: 0 auto 10px;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-  }
-
-  h1 {
-    color: #FFD700;
-    font-size: 32px;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-  }
-
-  .subtitle {
-    color: #aaa;
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-
-  .chat-box {
-    background: #111;
-    border: 1px solid #FFD700;
-    border-radius: 15px;
-    padding: 20px;
-    height: 400px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-  }
-
-  .message {
-    margin-bottom: 15px;
-    padding: 12px 15px;
-    border-radius: 10px;
-    background: #1a1a1a;
-    border-left: 3px solid #FFD700;
-  }
-
-  .message.knox {
-    border-left: 3px solid #FFD700;
-  }
-
-  .message-label {
-    color: #FFD700;
-    font-weight: bold;
-    font-size: 12px;
-    margin-bottom: 5px;
-  }
-
-  .input-area {
-    display: flex;
-    gap: 10px;
-  }
-
-  input {
-    flex: 1;
-    background: #111;
-    border: 2px solid #333;
-    border-radius: 12px;
-    padding: 15px;
-    color: #fff;
-    font-size: 14px;
-    outline: none;
-    transition: border 0.3s;
-  }
-
-  input:focus {
-    border-color: #FFD700;
-  }
-
-  button {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    border: none;
-    border-radius: 12px;
-    padding: 15px 25px;
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-  }
-
-  button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
-  }
-</style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="logo"></div>
-      <h1>KNOX</h1>
-      <div class="subtitle">AI ASSISTANT</div>
-    </div>
-
-    <div class="chat-box" id="chatBox">
-      <div class="message knox">
-        <div class="message-label">⚡ KNOX</div>
-        <div>Line 1: KNOX Online 👑</div>
-        <div>Line 2: Roast + Help, rendu side yum naan dhan 💀</div>
-        <div>Line 3: Tip: Kelvi ketu, answer vaangu 🔥</div>
-      </div>
-    </div>
-
-    <div class="input-area">
-      <input type="text" id="userInput" placeholder="Ask KNOX anything...">
-      <button onclick="sendMsg()">➤</button>
-    </div>
-  </div>
-
-<script>
-  async function sendMsg() {
-    const input = document.getElementById('userInput');
-    const chatBox = document.getElementById('chatBox');
-    const msg = input.value.trim();
-    if(!msg) return;
-
-    chatBox.innerHTML += `<div class="message"><div class="message-label">You</div><div>${msg}</div></div>`;
-    input.value = '';
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    const res = await fetch('https://knox-all-rounder-ai.onrender.com/chat', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({message: msg})
-    });
-    const data = await res.json();
+@app.route('/chat', methods=['POST'])
+def chat():
+    try:
+        data = request.get_json()
+        message = data.get('message', '')
+        
+        # Ippo test ku simple reply. Aprom Gemini/OpenAI connect panlam
+        reply = f"KNOX kekudhu: {message}"
+        
+        return jsonify({"reply": reply})
     
-    chatBox.innerHTML += `<div class="message knox"><div class="message-label">⚡ KNOX</div><div>${data.reply}</div></div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-  document.getElementById('userInput').addEventListener('keypress', e => {
-    if(e.key === 'Enter') sendMsg();
-  });
-</script>
-</body>
-</html>
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
