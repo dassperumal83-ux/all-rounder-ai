@@ -3,68 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Knox — Elite AI</title>
+
+<title>Knox AI</title>
 
 <style>
-:root{
-  --black:#030504;
-  --black2:#080b09;
-  --panel:#0b100d;
-  --panel2:#101711;
-
-  --gold:#d4af37;
-  --gold2:#f3d477;
-  --gold-dark:#806719;
-
-  --green:#0f5f3d;
-  --green2:#19a86b;
-  --green3:#063a27;
-
-  --white:#f4f3ed;
-  --muted:#89918b;
-
-  --border:rgba(212,175,55,.16);
-  --green-border:rgba(25,168,107,.20);
-
-  --radius:20px;
-}
-
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html,body{
-  width:100%;
-  height:100%;
+:root{
+    --black:#030504;
+    --black2:#080c09;
+    --gold:#d6b34a;
+    --gold-light:#f4d978;
+    --green:#0b5c3b;
+    --green-light:#19a66b;
+    --white:#f4f4ef;
+    --muted:#858e88;
+    --line:rgba(214,179,74,.18);
 }
 
 body{
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 15% 15%,rgba(212,175,55,.075),transparent 28%),
-    radial-gradient(circle at 85% 75%,rgba(15,95,61,.16),transparent 32%),
-    linear-gradient(135deg,#020303,#050806 55%,#020403);
-  color:var(--white);
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color:var(--white);
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(214,179,74,.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(11,92,59,.18),
+            transparent 35%
+        ),
+        var(--black);
 }
 
 /* =========================
-   APP
+   MAIN APP
 ========================= */
 
 .app{
-  width:100%;
-  height:100vh;
-  display:flex;
+    width:100%;
+    height:100vh;
+    display:flex;
 }
 
 /* =========================
@@ -72,46 +67,20 @@ body{
 ========================= */
 
 .sidebar{
-  width:275px;
-  height:100vh;
-  padding:19px;
-  display:flex;
-  flex-direction:column;
+    width:260px;
+    height:100vh;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(7,10,8,.97),
-      rgba(3,5,4,.98)
-    );
+    background:rgba(5,8,6,.96);
 
-  border-right:1px solid var(--border);
-  backdrop-filter:blur(25px);
+    border-right:1px solid var(--line);
 
-  position:relative;
-  z-index:20;
+    padding:20px;
 
-  transition:.3s ease;
-}
+    display:flex;
+    flex-direction:column;
 
-/* gold vertical edge */
-
-.sidebar::after{
-  content:"";
-  position:absolute;
-  right:-1px;
-  top:8%;
-  width:1px;
-  height:84%;
-
-  background:
-    linear-gradient(
-      transparent,
-      rgba(212,175,55,.65),
-      transparent
-    );
-
-  opacity:.45;
+    position:relative;
+    z-index:20;
 }
 
 /* =========================
@@ -119,47 +88,47 @@ body{
 ========================= */
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:30px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:30px;
 }
 
-.logo-mark{
-  width:45px;
-  height:45px;
+.logo-box{
+    width:44px;
+    height:44px;
 
-  display:grid;
-  place-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  border-radius:14px;
+    border-radius:14px;
 
-  font-size:22px;
-  font-weight:950;
+    color:#050705;
 
-  color:#050705;
+    font-size:22px;
+    font-weight:900;
 
-  background:
-    linear-gradient(
-      145deg,
-      var(--gold2),
-      var(--gold),
-      #9a7a20
-    );
+    background:
+        linear-gradient(
+            145deg,
+            var(--gold-light),
+            var(--gold)
+        );
 
-  box-shadow:
-    0 0 20px rgba(212,175,55,.17),
-    inset 0 1px 2px rgba(255,255,255,.5);
+    box-shadow:
+        0 0 25px rgba(214,179,74,.15);
 }
 
-.logo-text{
-  font-size:22px;
-  font-weight:850;
-  letter-spacing:-.7px;
+.logo-name{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:-.6px;
 }
 
-.logo-text span{
-  color:var(--gold);
+.logo-name span{
+    color:var(--gold);
 }
 
 /* =========================
@@ -167,251 +136,222 @@ body{
 ========================= */
 
 .new-chat{
-  width:100%;
-  padding:13px 15px;
+    width:100%;
 
-  border:1px solid rgba(212,175,55,.32);
-  border-radius:14px;
+    padding:13px;
 
-  color:var(--gold2);
+    border:1px solid rgba(214,179,74,.28);
+    border-radius:14px;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(212,175,55,.10),
-      rgba(15,95,61,.10)
-    );
+    background:
+        linear-gradient(
+            135deg,
+            rgba(214,179,74,.10),
+            rgba(11,92,59,.08)
+        );
 
-  cursor:pointer;
+    color:var(--gold-light);
 
-  font-size:13px;
-  font-weight:750;
+    font-size:13px;
+    font-weight:700;
 
-  transition:.25s;
+    cursor:pointer;
+
+    transition:.2s;
 }
 
 .new-chat:hover{
-  transform:translateY(-2px);
+    border-color:var(--gold);
 
-  border-color:rgba(212,175,55,.65);
-
-  box-shadow:
-    0 8px 30px rgba(212,175,55,.08);
+    transform:translateY(-2px);
 }
 
 /* =========================
-   SIDEBAR TEXT
+   HISTORY
 ========================= */
 
-.section-title{
-  margin:26px 8px 10px;
+.history-title{
+    margin:28px 8px 10px;
 
-  color:#626b64;
+    color:#5e6861;
 
-  font-size:10px;
-  font-weight:700;
+    font-size:10px;
+    font-weight:700;
 
-  letter-spacing:1.7px;
-  text-transform:uppercase;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
 }
 
 .history{
-  flex:1;
-  overflow:auto;
+    flex:1;
+    overflow:auto;
 }
 
-.chat-item{
-  margin-bottom:3px;
-  padding:11px 12px;
+.history-item{
+    padding:11px 12px;
 
-  border-radius:11px;
+    margin-bottom:3px;
 
-  color:#9aa39c;
+    border-radius:10px;
 
-  font-size:13px;
+    color:#929b95;
 
-  cursor:pointer;
+    font-size:13px;
 
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-
-  transition:.2s;
+    cursor:pointer;
 }
 
-.chat-item:hover{
-  color:#eee;
-  background:rgba(255,255,255,.035);
+.history-item:hover{
+    background:rgba(255,255,255,.04);
+    color:white;
 }
 
-.chat-item.active{
-  color:var(--gold2);
+.history-item.active{
+    color:var(--gold-light);
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(212,175,55,.09),
-      rgba(15,95,61,.05)
-    );
+    background:
+        linear-gradient(
+            90deg,
+            rgba(214,179,74,.09),
+            transparent
+        );
 
-  border-left:2px solid var(--gold);
+    border-left:2px solid var(--gold);
 }
 
 /* =========================
-   PROFILE
+   USER
 ========================= */
 
-.profile{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.user{
+    padding-top:15px;
 
-  padding-top:15px;
+    border-top:1px solid rgba(255,255,255,.06);
 
-  border-top:1px solid rgba(255,255,255,.06);
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-.avatar{
-  width:37px;
-  height:37px;
+.user-avatar{
+    width:36px;
+    height:36px;
 
-  display:grid;
-  place-items:center;
+    border-radius:50%;
 
-  border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  color:#050805;
+    color:#050705;
 
-  font-weight:900;
+    font-weight:900;
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--gold2),
-      var(--gold)
-    );
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
 }
 
-.profile-info{
-  flex:1;
+.user-text{
+    flex:1;
 }
 
-.profile-name{
-  font-size:13px;
-  font-weight:700;
+.user-name{
+    font-size:13px;
+    font-weight:700;
 }
 
-.profile-plan{
-  margin-top:2px;
-
-  color:var(--muted);
-
-  font-size:10px;
-}
-
-.icon-btn{
-  width:38px;
-  height:38px;
-
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:11px;
-
-  color:#9da59f;
-  background:rgba(255,255,255,.025);
-
-  cursor:pointer;
-
-  transition:.2s;
-}
-
-.icon-btn:hover{
-  color:var(--gold2);
-  border-color:rgba(212,175,55,.25);
+.user-plan{
+    color:var(--muted);
+    font-size:10px;
 }
 
 /* =========================
-   MAIN
+   CONTENT
 ========================= */
 
-.main{
-  min-width:0;
-  flex:1;
+.content{
+    flex:1;
+    min-width:0;
 
-  display:flex;
-  flex-direction:column;
+    display:flex;
+    flex-direction:column;
 
-  position:relative;
+    position:relative;
 }
 
 /* =========================
-   TOP BAR
+   TOPBAR
 ========================= */
 
 .topbar{
-  height:70px;
+    height:68px;
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+    padding:0 22px;
 
-  padding:0 22px;
+    border-bottom:1px solid rgba(255,255,255,.06);
 
-  border-bottom:1px solid rgba(255,255,255,.055);
+    background:rgba(3,5,4,.70);
 
-  background:rgba(3,5,4,.62);
-
-  backdrop-filter:blur(20px);
-
-  position:relative;
-  z-index:10;
-}
-
-.menu{
-  display:none;
-
-  border:0;
-  background:none;
-
-  color:var(--gold2);
-
-  font-size:22px;
-
-  cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .model{
-  display:flex;
-  align-items:center;
-  gap:9px;
+    display:flex;
+    align-items:center;
+    gap:9px;
 
-  padding:9px 13px;
+    padding:9px 13px;
 
-  border:1px solid rgba(212,175,55,.18);
-  border-radius:12px;
+    border:1px solid var(--line);
+    border-radius:12px;
 
-  background:rgba(212,175,55,.035);
+    background:rgba(214,179,74,.035);
 
-  color:#d9d9d0;
-
-  font-size:12px;
-  font-weight:700;
+    font-size:12px;
+    font-weight:700;
 }
 
-.status-dot{
-  width:7px;
-  height:7px;
+.dot{
+    width:7px;
+    height:7px;
 
-  border-radius:50%;
+    border-radius:50%;
 
-  background:var(--green2);
+    background:var(--green-light);
 
-  box-shadow:
-    0 0 10px rgba(25,168,107,.9);
+    box-shadow:
+        0 0 10px var(--green-light);
 }
 
-.top-actions{
-  display:flex;
-  gap:8px;
+.top-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.small-button{
+    width:38px;
+    height:38px;
+
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:11px;
+
+    background:rgba(255,255,255,.025);
+
+    color:#9da59f;
+
+    cursor:pointer;
+}
+
+.small-button:hover{
+    color:var(--gold-light);
+
+    border-color:var(--line);
 }
 
 /* =========================
@@ -419,19 +359,19 @@ body{
 ========================= */
 
 .chat{
-  flex:1;
+    flex:1;
 
-  overflow-y:auto;
+    overflow-y:auto;
 
-  padding:
-    40px
-    20px
-    180px;
+    padding:
+        35px
+        20px
+        170px;
 }
 
-.chat-inner{
-  max-width:850px;
-  margin:auto;
+.chat-container{
+    max-width:850px;
+    margin:auto;
 }
 
 /* =========================
@@ -439,154 +379,136 @@ body{
 ========================= */
 
 .hero{
-  padding:48px 0 36px;
-  text-align:center;
+    text-align:center;
+
+    padding:
+        45px
+        0
+        30px;
 }
 
 .hero-logo{
-  width:78px;
-  height:78px;
+    width:76px;
+    height:76px;
 
-  margin:0 auto 24px;
+    margin:0 auto 23px;
 
-  display:grid;
-  place-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  border-radius:25px;
+    border-radius:24px;
 
-  color:#050705;
+    color:#050705;
 
-  font-size:36px;
-  font-weight:950;
+    font-size:34px;
+    font-weight:950;
 
-  background:
-    linear-gradient(
-      145deg,
-      #f4dc88,
-      var(--gold),
-      #806719
-    );
+    background:
+        linear-gradient(
+            145deg,
+            #f7df86,
+            var(--gold),
+            #987b25
+        );
 
-  box-shadow:
-    0 0 45px rgba(212,175,55,.13),
-    inset 0 2px 3px rgba(255,255,255,.55);
-
-  position:relative;
-}
-
-.hero-logo::after{
-  content:"";
-
-  position:absolute;
-  inset:-8px;
-
-  border-radius:30px;
-
-  border:1px solid rgba(25,168,107,.18);
-
-  box-shadow:
-    0 0 25px rgba(15,95,61,.14);
+    box-shadow:
+        0 0 45px rgba(214,179,74,.14);
 }
 
 .hero h1{
-  font-size:clamp(34px,5vw,55px);
+    font-size:clamp(34px,5vw,54px);
 
-  letter-spacing:-2.4px;
+    letter-spacing:-2.5px;
 
-  margin-bottom:13px;
+    margin-bottom:12px;
 }
 
-.gradient{
-  background:
-    linear-gradient(
-      90deg,
-      var(--gold2),
-      var(--gold),
-      var(--green2)
-    );
+.hero h1 span{
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-light),
+            var(--gold),
+            var(--green-light)
+        );
 
-  -webkit-background-clip:text;
-  background-clip:text;
+    -webkit-background-clip:text;
+    background-clip:text;
 
-  color:transparent;
+    color:transparent;
 }
 
 .hero p{
-  color:var(--muted);
+    color:var(--muted);
 
-  font-size:14px;
+    font-size:14px;
 }
 
 /* =========================
-   SUGGESTIONS
+   CARDS
 ========================= */
 
-.suggestions{
-  display:grid;
+.cards{
+    display:grid;
 
-  grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+        repeat(2,1fr);
 
-  gap:12px;
+    gap:12px;
 
-  margin-top:30px;
+    margin-top:30px;
 }
 
-.suggestion{
-  padding:18px;
+.card{
+    padding:18px;
 
-  text-align:left;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:17px;
 
-  border:1px solid rgba(255,255,255,.065);
-  border-radius:17px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(11,92,59,.025)
+        );
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.035),
-      rgba(15,95,61,.025)
-    );
+    cursor:pointer;
 
-  cursor:pointer;
+    text-align:left;
 
-  transition:.25s;
+    transition:.25s;
 }
 
-.suggestion:hover{
-  transform:translateY(-3px);
+.card:hover{
+    transform:translateY(-3px);
 
-  border-color:rgba(212,175,55,.25);
+    border-color:
+        rgba(214,179,74,.28);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(212,175,55,.065),
-      rgba(15,95,61,.06)
-    );
-
-  box-shadow:
-    0 12px 35px rgba(0,0,0,.25);
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.25);
 }
 
-.suggestion-icon{
-  margin-bottom:10px;
+.card-icon{
+    color:var(--gold);
 
-  color:var(--gold);
+    font-size:20px;
 
-  font-size:20px;
+    margin-bottom:9px;
 }
 
-.suggestion strong{
-  display:block;
+.card-title{
+    font-size:13px;
+    font-weight:750;
 
-  margin-bottom:4px;
-
-  font-size:13px;
+    margin-bottom:4px;
 }
 
-.suggestion span{
-  color:#707970;
+.card-description{
+    color:#707a73;
 
-  font-size:11px;
+    font-size:11px;
 }
 
 /* =========================
@@ -594,267 +516,260 @@ body{
 ========================= */
 
 .message{
-  display:flex;
+    display:flex;
 
-  gap:13px;
-
-  margin:20px 0;
+    margin:18px 0;
 }
 
 .message.user{
-  justify-content:flex-end;
+    justify-content:flex-end;
 }
 
-.message-content{
-  max-width:75%;
+.bubble{
+    max-width:75%;
 
-  padding:13px 16px;
+    padding:13px 16px;
 
-  border-radius:18px;
+    border-radius:17px;
 
-  font-size:14px;
+    font-size:14px;
 
-  line-height:1.65;
+    line-height:1.6;
 }
 
-.user .message-content{
-  color:#fff;
+.user .bubble{
+    background:
+        linear-gradient(
+            135deg,
+            #0e6843,
+            #073c29
+        );
 
-  background:
-    linear-gradient(
-      135deg,
-      #185f41,
-      #0a3b29
-    );
+    border:
+        1px solid rgba(25,166,107,.25);
 
-  border:
-    1px solid rgba(25,168,107,.25);
-
-  border-bottom-right-radius:5px;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.22);
+    border-bottom-right-radius:5px;
 }
 
-.ai .message-content{
-  color:#d9ddd9;
+.ai .bubble{
+    background:rgba(255,255,255,.035);
 
-  background:
-    rgba(255,255,255,.028);
+    border:
+        1px solid rgba(214,179,74,.12);
 
-  border:
-    1px solid rgba(212,175,55,.11);
-
-  border-bottom-left-radius:5px;
+    border-bottom-left-radius:5px;
 }
 
 /* =========================
-   COMPOSER
+   INPUT
 ========================= */
 
-.composer-wrap{
-  position:absolute;
+.composer-area{
+    position:absolute;
 
-  left:0;
-  right:0;
-  bottom:0;
+    left:0;
+    right:0;
+    bottom:0;
 
-  padding:
-    20px
-    20px
-    22px;
+    padding:
+        20px;
 
-  background:
-    linear-gradient(
-      transparent,
-      var(--black) 35%
-    );
-
-  z-index:5;
+    background:
+        linear-gradient(
+            transparent,
+            var(--black) 38%
+        );
 }
 
 .composer{
-  max-width:850px;
+    max-width:850px;
 
-  margin:auto;
+    margin:auto;
 
-  padding:11px;
+    padding:10px;
 
-  border:
-    1px solid rgba(212,175,55,.18);
+    border:
+        1px solid rgba(214,179,74,.20);
 
-  border-radius:23px;
+    border-radius:22px;
 
-  background:
-    rgba(7,10,8,.94);
+    background:
+        rgba(7,10,8,.96);
 
-  backdrop-filter:blur(25px);
-
-  box-shadow:
-    0 20px 70px rgba(0,0,0,.55);
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.60);
 }
 
-.input-row{
-  display:flex;
+.input{
+    display:flex;
 
-  align-items:flex-end;
+    align-items:flex-end;
 
-  gap:9px;
+    gap:8px;
 }
 
 textarea{
-  flex:1;
+    flex:1;
 
-  min-height:48px;
-  max-height:150px;
+    min-height:48px;
+    max-height:140px;
 
-  resize:none;
+    resize:none;
 
-  border:0;
-  outline:0;
+    outline:none;
+    border:none;
 
-  background:transparent;
+    background:transparent;
 
-  color:#f4f4ef;
+    color:white;
 
-  font-family:inherit;
+    font-family:inherit;
 
-  font-size:14px;
+    font-size:14px;
 
-  padding:
-    13px
-    8px;
+    padding:13px 8px;
 }
 
 textarea::placeholder{
-  color:#5f6861;
+    color:#59635c;
 }
 
-.tool-btn{
-  width:42px;
-  height:42px;
+.attach,
+.voice{
+    width:42px;
+    height:42px;
 
-  border:1px solid rgba(255,255,255,.055);
-  border-radius:12px;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:12px;
 
-  color:#919991;
+    background:rgba(255,255,255,.025);
 
-  background:rgba(255,255,255,.025);
+    color:#8e9790;
 
-  cursor:pointer;
-
-  font-size:17px;
-
-  transition:.2s;
+    cursor:pointer;
 }
 
-.tool-btn:hover{
-  color:var(--gold2);
-
-  border-color:rgba(212,175,55,.25);
+.attach:hover,
+.voice:hover{
+    color:var(--gold-light);
 }
 
 .send{
-  width:44px;
-  height:44px;
+    width:44px;
+    height:44px;
 
-  border:1px solid rgba(212,175,55,.4);
+    border:none;
+    border-radius:14px;
 
-  border-radius:14px;
+    color:#050705;
 
-  color:#050705;
+    font-size:18px;
+    font-weight:900;
 
-  background:
-    linear-gradient(
-      145deg,
-      #f3d477,
-      #d4af37,
-      #927421
-    );
+    cursor:pointer;
 
-  cursor:pointer;
+    background:
+        linear-gradient(
+            145deg,
+            #f3d477,
+            var(--gold),
+            #967823
+        );
 
-  font-size:18px;
-  font-weight:900;
-
-  box-shadow:
-    0 5px 25px rgba(212,175,55,.13);
-
-  transition:.2s;
+    transition:.2s;
 }
 
 .send:hover{
-  transform:scale(1.05);
-
-  box-shadow:
-    0 8px 30px rgba(212,175,55,.23);
+    transform:scale(1.05);
 }
 
-.composer-footer{
-  display:flex;
+.footer{
+    display:flex;
+    justify-content:space-between;
 
-  justify-content:space-between;
-  align-items:center;
+    padding:7px 6px 0;
 
-  padding:
-    7px
-    6px
-    0;
+    color:#505952;
 
-  color:#505951;
-
-  font-size:9px;
+    font-size:9px;
 }
 
-.tools{
-  display:flex;
-  gap:7px;
-}
-
-.tools span:first-child{
-  color:#9c8129;
+.footer strong{
+    color:#a4862c;
 }
 
 /* =========================
-   TYPING
+   MOBILE
 ========================= */
 
-.typing{
-  display:flex;
-  gap:5px;
+.mobile-menu{
+    display:none;
+
+    border:none;
+    background:none;
+
+    color:var(--gold-light);
+
+    font-size:22px;
 }
 
-.typing span{
-  width:6px;
-  height:6px;
+@media(max-width:760px){
 
-  border-radius:50%;
+    .sidebar{
+        position:fixed;
 
-  background:var(--gold);
+        left:-280px;
+        top:0;
 
-  animation:
-    bounce 1s infinite;
-}
+        transition:.3s;
 
-.typing span:nth-child(2){
-  animation-delay:.15s;
-}
+        box-shadow:
+            20px 0 60px rgba(0,0,0,.7);
+    }
 
-.typing span:nth-child(3){
-  animation-delay:.3s;
-}
+    .sidebar.open{
+        left:0;
+    }
 
-@keyframes bounce{
+    .mobile-menu{
+        display:block;
+    }
 
-  0%,80%,100%{
-    transform:translateY(0);
-    opacity:.35;
-  }
+    .topbar{
+        height:64px;
 
-  40%{
-    transform:translateY(-5px);
-    opacity:1;
-  }
+        padding:0 14px;
+    }
+
+    .chat{
+        padding:
+            25px
+            13px
+            160px;
+    }
+
+    .hero{
+        padding:
+            30px
+            0
+            25px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .bubble{
+        max-width:88%;
+    }
+
+    .composer-area{
+        padding:12px;
+    }
 
 }
 
@@ -863,94 +778,12 @@ textarea::placeholder{
 ========================= */
 
 ::-webkit-scrollbar{
-  width:6px;
+    width:5px;
 }
 
 ::-webkit-scrollbar-thumb{
-  background:#202820;
-  border-radius:20px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-  background:#3c4c3f;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:760px){
-
-  .sidebar{
-    position:fixed;
-
-    left:-290px;
-    top:0;
-
-    box-shadow:
-      20px 0 70px rgba(0,0,0,.65);
-  }
-
-  .sidebar.open{
-    left:0;
-  }
-
-  .menu{
-    display:block;
-  }
-
-  .topbar{
-    height:64px;
-    padding:0 14px;
-  }
-
-  .model{
-    font-size:11px;
-  }
-
-  .chat{
-    padding:
-      25px
-      13px
-      160px;
-  }
-
-  .hero{
-    padding:
-      32px
-      0
-      25px;
-  }
-
-  .hero-logo{
-    width:68px;
-    height:68px;
-
-    border-radius:21px;
-
-    font-size:30px;
-  }
-
-  .hero h1{
-    font-size:36px;
-  }
-
-  .suggestions{
-    grid-template-columns:1fr;
-  }
-
-  .message-content{
-    max-width:88%;
-  }
-
-  .composer-wrap{
-    padding:
-      12px;
-  }
-
-  .composer-footer{
-    font-size:8px;
-  }
+    background:#202821;
+    border-radius:20px;
 }
 </style>
 </head>
@@ -960,640 +793,452 @@ textarea::placeholder{
 
 <div class="app">
 
-  <!-- =========================
-       SIDEBAR
-  ========================== -->
+    <!-- SIDEBAR -->
 
-  <aside class="sidebar" id="sidebar">
+    <aside class="sidebar" id="sidebar">
 
-    <div class="logo">
+        <div class="logo">
 
-      <div class="logo-mark">
-        K
-      </div>
+            <div class="logo-box">
+                K
+            </div>
 
-      <div class="logo-text">
-        Kn<span>o</span>x
-      </div>
+            <div class="logo-name">
+                Kn<span>o</span>x
+            </div>
 
-    </div>
-
-
-    <button
-      class="new-chat"
-      onclick="newChat()">
-
-      ＋ New conversation
-
-    </button>
-
-
-    <div class="section-title">
-      Recent chats
-    </div>
-
-
-    <div
-      class="history"
-      id="history">
-
-      <div class="chat-item active">
-        Welcome to Knox
-      </div>
-
-      <div class="chat-item">
-        AI project ideas
-      </div>
-
-      <div class="chat-item">
-        Build my website
-      </div>
-
-      <div class="chat-item">
-        Explain something
-      </div>
-
-    </div>
-
-
-    <div class="profile">
-
-      <div class="avatar">
-        K
-      </div>
-
-      <div class="profile-info">
-
-        <div class="profile-name">
-          Knox User
         </div>
 
-        <div class="profile-plan">
-          Free workspace
-        </div>
-
-      </div>
-
-      <button class="icon-btn">
-        ⚙
-      </button>
-
-    </div>
-
-  </aside>
-
-
-  <!-- =========================
-       MAIN
-  ========================== -->
-
-  <main class="main">
-
-
-    <header class="topbar">
-
-      <button
-        class="menu"
-        onclick="toggleSidebar()">
-
-        ☰
-
-      </button>
-
-
-      <div class="model">
-
-        <span class="status-dot"></span>
-
-        Knox AI
-
-      </div>
-
-
-      <div class="top-actions">
 
         <button
-          class="icon-btn"
-          onclick="newChat()">
+            class="new-chat"
+            onclick="newChat()">
 
-          ＋
+            ＋ New conversation
 
         </button>
 
-        <button class="icon-btn">
-          ⚙
-        </button>
 
-      </div>
-
-    </header>
-
-
-    <!-- =========================
-         CHAT
-    ========================== -->
-
-    <section
-      class="chat"
-      id="chat">
-
-      <div
-        class="chat-inner"
-        id="messages">
-
-
-        <div class="hero">
-
-          <div class="hero-logo">
-            K
-          </div>
-
-
-          <h1>
-
-            Welcome to
-            <span class="gradient">
-              Knox
-            </span>
-
-          </h1>
-
-
-          <p>
-            Intelligence. Creation. Everything in one place.
-          </p>
-
-
-          <div class="suggestions">
-
-
-            <div
-              class="suggestion"
-              onclick="usePrompt(
-              'Explain artificial intelligence simply'
-              )">
-
-              <div class="suggestion-icon">
-                ✦
-              </div>
-
-              <strong>
-                Learn something
-              </strong>
-
-              <span>
-                Understand difficult topics
-              </span>
-
-            </div>
-
-
-            <div
-              class="suggestion"
-              onclick="usePrompt(
-              'Give me a powerful business idea'
-              )">
-
-              <div class="suggestion-icon">
-                ◈
-              </div>
-
-              <strong>
-                Create ideas
-              </strong>
-
-              <span>
-                Turn imagination into ideas
-              </span>
-
-            </div>
-
-
-            <div
-              class="suggestion"
-              onclick="usePrompt(
-              'Help me build a modern website'
-              )">
-
-              <div class="suggestion-icon">
-                ⌘
-              </div>
-
-              <strong>
-                Build with code
-              </strong>
-
-              <span>
-                Create something powerful
-              </span>
-
-            </div>
-
-
-            <div
-              class="suggestion"
-              onclick="usePrompt(
-              'Create a study plan for me'
-              )">
-
-              <div class="suggestion-icon">
-                ◇
-              </div>
-
-              <strong>
-                Get productive
-              </strong>
-
-              <span>
-                Plan and organize your work
-              </span>
-
-            </div>
-
-
-          </div>
-
+        <div class="history-title">
+            Recent conversations
         </div>
 
-      </div>
 
-    </section>
+        <div class="history">
 
+            <div class="history-item active">
+                Welcome to Knox
+            </div>
 
-    <!-- =========================
-         COMPOSER
-    ========================== -->
+            <div class="history-item">
+                AI project ideas
+            </div>
 
-    <div class="composer-wrap">
+            <div class="history-item">
+                Website development
+            </div>
 
-      <div class="composer">
-
-        <div class="input-row">
-
-
-          <button
-            class="tool-btn"
-            title="Attach file">
-
-            ＋
-
-          </button>
-
-
-          <textarea
-            id="prompt"
-            rows="1"
-            placeholder="Ask Knox anything..."
-            onkeydown="handleKey(event)">
-          </textarea>
-
-
-          <button
-            class="tool-btn"
-            title="Voice">
-
-            ◉
-
-          </button>
-
-
-          <button
-            class="send"
-            onclick="sendMessage()">
-
-            ↑
-
-          </button>
-
+            <div class="history-item">
+                Study assistant
+            </div>
 
         </div>
 
 
-        <div class="composer-footer">
+        <div class="user">
 
-          <div class="tools">
+            <div class="user-avatar">
+                K
+            </div>
 
-            <span>
-              KNOX AI
-            </span>
+            <div class="user-text">
 
-            <span>
-              •
-            </span>
+                <div class="user-name">
+                    Knox User
+                </div>
 
-            <span>
-              Ready
-            </span>
+                <div class="user-plan">
+                    Free workspace
+                </div>
 
-          </div>
-
-
-          <span>
-            Enter to send · Shift + Enter for new line
-          </span>
+            </div>
 
         </div>
 
-      </div>
+    </aside>
 
-    </div>
 
-  </main>
+    <!-- CONTENT -->
+
+    <main class="content">
+
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu"
+                onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+
+            <div class="model">
+
+                <span class="dot"></span>
+
+                Knox AI
+
+            </div>
+
+
+            <div class="top-buttons">
+
+                <button
+                    class="small-button"
+                    onclick="newChat()">
+
+                    ＋
+
+                </button>
+
+                <button class="small-button">
+                    ⚙
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- CHAT -->
+
+        <section class="chat" id="chat">
+
+            <div
+                class="chat-container"
+                id="messages">
+
+
+                <div class="hero">
+
+                    <div class="hero-logo">
+                        K
+                    </div>
+
+
+                    <h1>
+                        Welcome to
+                        <span>Knox</span>
+                    </h1>
+
+
+                    <p>
+                        Intelligence. Creation. Everything in one place.
+                    </p>
+
+
+                    <div class="cards">
+
+
+                        <div
+                            class="card"
+                            onclick="setPrompt('Explain artificial intelligence simply')">
+
+                            <div class="card-icon">
+                                ✦
+                            </div>
+
+                            <div class="card-title">
+                                Learn
+                            </div>
+
+                            <div class="card-description">
+                                Understand difficult topics
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="card"
+                            onclick="setPrompt('Give me a creative business idea')">
+
+                            <div class="card-icon">
+                                ◈
+                            </div>
+
+                            <div class="card-title">
+                                Create
+                            </div>
+
+                            <div class="card-description">
+                                Generate powerful ideas
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="card"
+                            onclick="setPrompt('Help me build a modern website')">
+
+                            <div class="card-icon">
+                                ⌘
+                            </div>
+
+                            <div class="card-title">
+                                Code
+                            </div>
+
+                            <div class="card-description">
+                                Build with AI
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="card"
+                            onclick="setPrompt('Create a study plan for me')">
+
+                            <div class="card-icon">
+                                ◇
+                            </div>
+
+                            <div class="card-title">
+                                Productivity
+                            </div>
+
+                            <div class="card-description">
+                                Plan and organize
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPOSER -->
+
+        <div class="composer-area">
+
+            <div class="composer">
+
+                <div class="input">
+
+                    <button class="attach">
+                        ＋
+                    </button>
+
+
+                    <textarea
+                        id="prompt"
+                        rows="1"
+                        placeholder="Ask Knox anything..."
+                        onkeydown="handleKey(event)">
+                    </textarea>
+
+
+                    <button class="voice">
+                        ◉
+                    </button>
+
+
+                    <button
+                        class="send"
+                        onclick="sendMessage()">
+
+                        ↑
+
+                    </button>
+
+                </div>
+
+
+                <div class="footer">
+
+                    <span>
+                        <strong>KNOX AI</strong>
+                        &nbsp;•&nbsp; Ready
+                    </span>
+
+                    <span>
+                        Enter to send
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
 
 </div>
 
 
 <script>
 
-/* =========================
-   KNOX UI ENGINE
-========================= */
-
 const promptBox =
-  document.getElementById("prompt");
+    document.getElementById("prompt");
 
 const messages =
-  document.getElementById("messages");
+    document.getElementById("messages");
 
 const chat =
-  document.getElementById("chat");
+    document.getElementById("chat");
 
 
-/* Send with Enter */
+/* =========================
+   SET PROMPT
+========================= */
+
+function setPrompt(text){
+
+    promptBox.value = text;
+
+    promptBox.focus();
+
+}
+
+
+/* =========================
+   ENTER
+========================= */
 
 function handleKey(event){
 
-  if(
-    event.key === "Enter" &&
-    !event.shiftKey
-  ){
+    if(
+        event.key === "Enter" &&
+        !event.shiftKey
+    ){
 
-    event.preventDefault();
+        event.preventDefault();
 
-    sendMessage();
+        sendMessage();
 
-  }
-
-}
-
-
-/* Suggestion buttons */
-
-function usePrompt(text){
-
-  promptBox.value = text;
-
-  promptBox.focus();
+    }
 
 }
 
 
-/* Send message */
+/* =========================
+   SEND
+========================= */
 
 function sendMessage(){
 
-  const text =
-    promptBox.value.trim();
+    const text =
+        promptBox.value.trim();
 
-  if(!text) return;
-
-
-  removeHero();
-
-  addMessage(
-    text,
-    "user"
-  );
+    if(!text) return;
 
 
-  promptBox.value = "";
+    const hero =
+        document.querySelector(".hero");
 
-  showTyping();
+    if(hero){
+        hero.remove();
+    }
 
-
-  /*
-  ========================================
-  CONNECT YOUR REAL KNOX BACKEND HERE
-  ========================================
-
-  fetch("/api/chat",{
-
-    method:"POST",
-
-    headers:{
-      "Content-Type":"application/json"
-    },
-
-    body:JSON.stringify({
-      message:text
-    })
-
-  })
-
-  .then(response => response.json())
-
-  .then(data => {
-
-    removeTyping();
 
     addMessage(
-      data.reply,
-      "ai"
+        text,
+        "user"
     );
 
-  });
 
-  ========================================
-  */
-
-
-  setTimeout(()=>{
-
-    removeTyping();
-
-    addMessage(
-      "Knox is ready. Connect your AI backend here to generate real AI responses.",
-      "ai"
-    );
-
-  },900);
+    promptBox.value = "";
 
 }
 
 
-/* Add message */
+/* =========================
+   MESSAGE
+========================= */
 
-function addMessage(
-  text,
-  type
-){
+function addMessage(text,type){
 
-  const message =
-    document.createElement("div");
+    const message =
+        document.createElement("div");
 
-  message.className =
-    "message " + type;
-
-
-  message.innerHTML = `
-    <div class="message-content">
-      ${escapeHTML(text)}
-    </div>
-  `;
+    message.className =
+        "message " + type;
 
 
-  messages.appendChild(message);
+    const bubble =
+        document.createElement("div");
 
-  scrollBottom();
-
-}
-
-
-/* Typing */
-
-function showTyping(){
-
-  const typing =
-    document.createElement("div");
-
-  typing.id = "typing";
-
-  typing.className =
-    "message ai";
+    bubble.className =
+        "bubble";
 
 
-  typing.innerHTML = `
-
-    <div class="message-content">
-
-      <div class="typing">
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-      </div>
-
-    </div>
-
-  `;
+    bubble.textContent =
+        text;
 
 
-  messages.appendChild(typing);
+    message.appendChild(bubble);
 
-  scrollBottom();
+    messages.appendChild(message);
+
+
+    chat.scrollTo({
+        top:chat.scrollHeight,
+        behavior:"smooth"
+    });
 
 }
 
 
-function removeTyping(){
-
-  const typing =
-    document.getElementById("typing");
-
-  if(typing)
-    typing.remove();
-
-}
-
-
-/* Remove welcome screen */
-
-function removeHero(){
-
-  const hero =
-    document.querySelector(".hero");
-
-  if(hero)
-    hero.remove();
-
-}
-
-
-/* New chat */
+/* =========================
+   NEW CHAT
+========================= */
 
 function newChat(){
 
-  messages.innerHTML = `
-
-    <div class="hero">
-
-      <div class="hero-logo">
-        K
-      </div>
-
-      <h1>
-        Welcome to
-        <span class="gradient">
-          Knox
-        </span>
-      </h1>
-
-      <p>
-        Intelligence. Creation. Everything in one place.
-      </p>
-
-    </div>
-
-  `;
+    location.reload();
 
 }
 
 
-/* Mobile sidebar */
+/* =========================
+   MOBILE SIDEBAR
+========================= */
 
 function toggleSidebar(){
 
-  document
-    .getElementById("sidebar")
-    .classList
-    .toggle("open");
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
 
 }
 
 
-/* Scroll */
-
-function scrollBottom(){
-
-  chat.scrollTo({
-
-    top:chat.scrollHeight,
-
-    behavior:"smooth"
-
-  });
-
-}
-
-
-/* Security */
-
-function escapeHTML(text){
-
-  const div =
-    document.createElement("div");
-
-  div.textContent = text;
-
-  return div.innerHTML;
-
-}
-
-
-/* Auto resize */
+/* =========================
+   TEXTAREA SIZE
+========================= */
 
 promptBox.addEventListener(
-  "input",
-  function(){
+    "input",
+    function(){
 
-    this.style.height =
-      "auto";
+        this.style.height =
+            "auto";
 
-    this.style.height =
-      this.scrollHeight + "px";
+        this.style.height =
+            this.scrollHeight + "px";
 
-  }
+    }
 );
 
 </script>
